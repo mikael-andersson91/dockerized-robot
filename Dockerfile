@@ -6,5 +6,7 @@ RUN PowerShell -Command New-Item -Path "C:\\" -ItemType "directory" -Name "UiPat
     Install-PackageProvider -Name NuGet -Force; \
     Register-PSRepository -Name UiPath -SourceLocation https://www.myget.org/F/uipath-dev/api/v2; \
     Install-Module -Repository UiPath -Name UiPath.Powershell -Force; \
-    Invoke-WebRequest "https://pkgs.dev.azure.com/uipath/Public.Feeds/_apis/packaging/feeds/UiPath-Official/nuget/packages/UiPath.CLI/versions/22.10.8378.25430/content" -OutFile "C:\\UiPathCLI"
+    Invoke-WebRequest "https://pkgs.dev.azure.com/uipath/Public.Feeds/_apis/packaging/feeds/UiPath-Official/nuget/packages/UiPath.CLI/versions/22.10.8378.25430/content" -OutFile "C:\\UiPathCLI.zip"; \
+    Expand-Archive -LiteralPath "C:\\UiPathCLI.zip" -DestionationPath "C:\\UiPathCLI"; \
+    $Env:Path += ';C:\\UiPathCLI\\tools'
 CMD ["cmd"]
