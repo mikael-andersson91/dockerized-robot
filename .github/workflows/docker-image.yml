@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag containerized-robot:${{ github.sha }} --tag containerized-robot:latest
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/containerized-robot:${{ github.sha }} --tag ${{ secrets.DOCKERHUB_USERNAME }}/containerized-robot:latest
 
     - name: Push the Docker image to Dockerhub
-      run: docker push --all-tags manderss/containerized-robot 
+      run: docker push --all-tags ${{ secrets.DOCKERHUB_USERNAME }}/containerized-robot 
