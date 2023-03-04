@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
 RUN PowerShell -Command Invoke-WebRequest "https://download.uipath.com/UiPathStudio.msi" -OutFile "C:\\UiPathStudio.msi"; \
     Start-Process "C:\\UiPathStudio.msi" -ArgumentList 'ADDLOCAL=DesktopFeature,Robot,Studio,RegisterService /quiet' -Wait; \
     $Env:Path += ';C:\\Program Files (x86)\\UiPath\\Studio'; \
