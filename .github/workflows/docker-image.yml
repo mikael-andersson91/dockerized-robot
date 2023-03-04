@@ -25,4 +25,4 @@ jobs:
       run: docker build . --file Dockerfile --tag containerized-robot:${{ github.sha }} --tag containerized-robot:latest
 
     - name: Push the Docker image to Dockerhub
-      run: docker push --all-tags containerized-robot 
+      run: docker push --all-tags manderss/containerized-robot 
